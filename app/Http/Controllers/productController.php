@@ -190,4 +190,11 @@ class productController extends AppBaseController
 		Session::put('cart', $cart);
 		return Response::json(['success'=>true,'total'=>$cart[$productid]],200);
 	}
+	public function emptycart()
+     {
+         if (Session::has('cart')) {
+             Session::forget('cart');
+         }
+         return Response::json(['success'=>true],200);
+     }
 }
